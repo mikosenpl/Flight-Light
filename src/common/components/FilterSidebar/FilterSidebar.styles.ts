@@ -31,7 +31,7 @@ export const FilterList = styled(List)`
 
 export const FilterTitle = styled(ListItemText)`
   > span {
-    font-size: ${({ theme }) => theme.fontSize.l};
+    font-size: ${({ theme }) => theme.fontSize.m};
     font-weight: 700;
   }
 `;

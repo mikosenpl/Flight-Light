@@ -3,26 +3,29 @@ import { Flight } from '../../models/Flight';
 import { flightLocaleDate, formatDuration } from '../../utils/duration';
 import { getImageOfAirlineUrl } from '../../utils/images';
 import {
-  AirlinesDiv,
-  BigTextFlightCard,
-  BookFlightButton,
-  BoundsPart,
-  FlexDivCenter,
+  CardAirlinesDiv,
   FlightCardWrapper,
-  FlightInfoMiddle,
-  FlightInfoMiddleLine,
-  FlightInfoShortLeftAlign,
-  FlightInfoShortRightAlign,
-  LeftCard,
-  MiddleLine,
-  RightCard,
-  RightCardInfo,
-  SmallTextFlightCard,
-  TextFlightCard,
-  Triangle,
-  YellowCircle,
-  YellowLine,
+  CardMiddle,
+  CardShortLeftAlign,
+  CardShortRightAlign,
+  CardLeft,
+  CardRight,
+  CardRightInfo,
+  CardTriangle,
+  CardCircleYellow,
+  CardYellowLine,
 } from './FlightCard.styles';
+import FlightInfo from '../FlightInfo/FlightInfo';
+import {
+  BoundsPart,
+  Text,
+  BigText,
+  FlexCenter,
+  SmallText,
+  FlexCenterFullWidth,
+  MiddleLine,
+  BookFlightButton,
+} from '../../assets/styles/GlobalStyle';
 
 interface FlightCardProps {
   flight: Flight;
@@ -40,30 +43,30 @@ const FlightCard = (props: FlightCardProps) => {
   ) => {
     return (
       <BoundsPart>
-        <AirlinesDiv>
+        <CardAirlinesDiv>
           <img
             src={AirlineImageUrl}
             alt={props.flight.airlineCode ?? 'airlineCode'}
             height="80%"
           />
-        </AirlinesDiv>
-        <FlightInfoShortRightAlign>
-          <TextFlightCard>{departureCode}</TextFlightCard>
-          <BigTextFlightCard>
+        </CardAirlinesDiv>
+        <CardShortRightAlign>
+          <Text>{departureCode}</Text>
+          <BigText>
             {departureDate.getUTCHours()}:
             {departureDate.getUTCMinutes().toString().padStart(2, '0')}
-          </BigTextFlightCard>
-          <TextFlightCard>{flightLocaleDate(departureDate)}</TextFlightCard>
-        </FlightInfoShortRightAlign>
+          </BigText>
+          <Text>{flightLocaleDate(departureDate)}</Text>
+        </CardShortRightAlign>
         {FlightInfoMiddleArea(duration)}
-        <FlightInfoShortLeftAlign>
-          <TextFlightCard>{destinationCode}</TextFlightCard>
-          <BigTextFlightCard>
+        <CardShortLeftAlign>
+          <Text>{destinationCode}</Text>
+          <BigText>
             {destinationDate.getUTCHours()}:
             {destinationDate.getUTCMinutes().toString().padStart(2, '0')}
-          </BigTextFlightCard>
-          <TextFlightCard>{flightLocaleDate(destinationDate)}</TextFlightCard>
-        </FlightInfoShortLeftAlign>
+          </BigText>
+          <Text>{flightLocaleDate(destinationDate)}</Text>
+        </CardShortLeftAlign>
         {/* <FlightModal flight={props.flight} /> */}
       </BoundsPart>
     );
@@ -73,22 +76,22 @@ const FlightCard = (props: FlightCardProps) => {
     const formattedDifference = formatDuration(duration);
 
     return (
-      <FlightInfoMiddle>
-        <FlexDivCenter>
-          <SmallTextFlightCard>{formattedDifference}</SmallTextFlightCard>
-        </FlexDivCenter>
-        <FlightInfoMiddleLine>
-          <YellowCircle />
-          <YellowLine />
-          <YellowCircle />
-        </FlightInfoMiddleLine>
-      </FlightInfoMiddle>
+      <CardMiddle>
+        <FlexCenter>
+          <SmallText>{formattedDifference}</SmallText>
+        </FlexCenter>
+        <FlexCenterFullWidth>
+          <CardCircleYellow />
+          <CardYellowLine />
+          <CardCircleYellow />
+        </FlexCenterFullWidth>
+      </CardMiddle>
     );
   };
 
   return (
     <FlightCardWrapper>
-      <LeftCard>
+      <CardLeft>
         {BoundPartArea(
           props.flight.bounds[0].departure.code,
           new Date(props.flight.bounds[0].departure.dateTime),
@@ -108,18 +111,21 @@ const FlightCard = (props: FlightCardProps) => {
         ) : (
           <BoundsPart></BoundsPart>
         )}
-      </LeftCard>
-      <RightCard>
-        <Triangle />
-        <RightCardInfo>
-          <BigTextFlightCard>
-            {props.flight.price.amount} {props.flight.price.currency}
-          </BigTextFlightCard>
-          <Link to={`/flight/${props.flight.uuid}`}>
-            <BookFlightButton>Book flight</BookFlightButton>
-          </Link>
-        </RightCardInfo>
-      </RightCard>
+      </CardLeft>
+      <CardRight>
+        <CardTriangle />
+        <CardRightInfo>
+          <FlightInfo flight={props.flight} />
+          <div>
+            <BigText>
+              {props.flight.price.amount} {props.flight.price.currency}
+            </BigText>
+            <Link to={`/flight/${props.flight.uuid}`}>
+              <BookFlightButton>Book flight</BookFlightButton>
+            </Link>
+          </div>
+        </CardRightInfo>
+      </CardRight>
     </FlightCardWrapper>
   );
 };

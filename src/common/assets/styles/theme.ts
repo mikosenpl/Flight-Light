@@ -8,9 +8,9 @@ export const lightTheme: DefaultTheme = {
     body: '#f5f0e1',
   },
   fontSize: {
-    xxl: '2.5rem',
-    xl: '2rem',
-    l: '1.5rem',
+    xxl: '3rem',
+    xl: '2.5rem',
+    l: '2rem',
     m: '1.2rem',
     s: '1rem',
   },

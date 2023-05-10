@@ -1,3 +1,4 @@
+import { Button } from '@mui/material';
 import styled from 'styled-components';
 
 export const FlightCardWrapper = styled.div`
@@ -20,7 +21,7 @@ export const FlightCardWrapper = styled.div`
   }
 `;
 
-export const LeftCard = styled.div`
+export const CardLeft = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -36,15 +37,7 @@ export const LeftCard = styled.div`
   }
 `;
 
-export const BoundsPart = styled.div`
-  display: flex;
-  padding: 1rem;
-  justify-content: space-between;
-  height: 49%;
-  width: 100%;
-`;
-
-export const FlightInfoShortRightAlign = styled.div`
+export const CardShortRightAlign = styled.div`
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -52,7 +45,7 @@ export const FlightInfoShortRightAlign = styled.div`
   width: 30%;
 `;
 
-export const FlightInfoShortLeftAlign = styled.div`
+export const CardShortLeftAlign = styled.div`
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -60,14 +53,7 @@ export const FlightInfoShortLeftAlign = styled.div`
   width: 30%;
 `;
 
-export const MiddleLine = styled.div`
-  width: 90%;
-  height: 1%;
-  margin: auto;
-  background-color: ${({ theme }) => theme.colors.primary};
-`;
-
-export const FlightInfoMiddle = styled.div`
+export const CardMiddle = styled.div`
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -75,33 +61,22 @@ export const FlightInfoMiddle = styled.div`
   width: 30%;
 `;
 
-export const FlightInfoMiddleLine = styled.div`
-  margin: auto;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-`;
-
-export const FlexDivCenter = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
-export const YellowLine = styled.div`
+export const CardYellowLine = styled.div`
   width: 50%;
   height: 2px;
   margin-top: 4px;
   background-color: ${({ theme }) => theme.colors.primary};
 `;
 
-export const YellowCircle = styled.div`
+export const CardCircleYellow = styled.div`
   width: 8px;
   height: 8px;
   border-radius: 13px;
   border: 2px solid ${({ theme }) => theme.colors.primary};
 `;
 
-export const Triangle = styled.div`
+export const CardTriangle = styled.div`
+  margin-top: -1rem;
   width: 0;
   height: 0;
   border-style: solid;
@@ -121,7 +96,7 @@ export const Triangle = styled.div`
   }
 `;
 
-export const AirlinesDiv = styled.div`
+export const CardAirlinesDiv = styled.div`
   display: flex;
   margin: 0 auto;
   padding-left: 1rem;
@@ -141,10 +116,11 @@ export const AirlinesDiv = styled.div`
   }
 `;
 
-export const RightCard = styled.div`
+export const CardRight = styled.div`
   background-color: ${({ theme }) => theme.colors.primary};
   display: flex;
   height: 100%;
+  padding: 1rem 0;
 
   ${({ theme }) => theme.mq.desktop} {
     width: 35%;
@@ -159,9 +135,9 @@ export const RightCard = styled.div`
   }
 `;
 
-export const RightCardInfo = styled.div`
+export const CardRightInfo = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   height: 100%;
 
   ${({ theme }) => theme.mq.desktop} {
@@ -179,28 +155,16 @@ export const RightCardInfo = styled.div`
   }
 `;
 
-export const BookFlightButton = styled.button`
-  margin: 0.5rem 0 20px 0;
-  width: 180px;
-  height: 48px;
-  font-size: 20px;
-  color: white;
-  border-radius: 24px;
-
-  background-color: ${({ theme }) => theme.colors.secondary};
-  border-color: ${({ theme }) => theme.colors.tertiary};
-`;
-
-export const BigTextFlightCard = styled.p`
-  font-weight: 700;
-  font-size: ${({ theme }) => theme.fontSize.xl};
-`;
-
-export const TextFlightCard = styled.p`
-  font-size: ${({ theme }) => theme.fontSize.m};
-`;
-
-export const SmallTextFlightCard = styled.p`
-  font-weight: 300;
-  font-size: ${({ theme }) => theme.fontSize.s};
+export const CardInfoButton = styled(Button)`
+  && {
+    font-size: ${({ theme }) => theme.fontSize.s};
+    font-weight: 700;
+    color: ${({ theme }) => theme.colors.secondary};
+    transition: opacity 0.5s ease-out;
+    opacity: 0.5;
+    &:hover {
+      background-color: transparent;
+      opacity: 1;
+    }
+  }
 `;

@@ -33,4 +33,6 @@ export interface Bound {
   departure: Departure;
   destination: Destination;
   duration: string;
+  flightNumber: string;
+  aircraftName: string;
 }

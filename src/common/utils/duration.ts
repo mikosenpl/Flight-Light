@@ -46,6 +46,16 @@ export const flightLocaleDate = (date: Date) => {
   return date.toLocaleDateString(region, options);
 };
 
+export const flightLocaleDateWithYear = (date: Date) => {
+  const options: Intl.DateTimeFormatOptions = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  };
+  const region = navigator.language;
+  return date.toLocaleDateString(region, options);
+};
+
 export const formatTimeSeconds = (minutes: number) => {
   const hours = Math.floor(minutes / 60);
   const minutesFormatted = String(minutes % 60).padStart(2, '0');
