@@ -5,6 +5,7 @@ import {
   BigTextHeadFlightList,
   TextHeadFlightList,
 } from './FlightsList.styles';
+import { useTranslation } from 'react-i18next';
 
 const Wrapper = styled.div`
   display: flex;
@@ -64,9 +65,10 @@ const HeadFlightsList: React.FC<WrapProps<HeadFlightsListProps>> = ({
     props.onSortDirectionChangeCallback(option);
   };
 
+  const { t } = useTranslation();
   return (
     <Wrapper>
-      <TextHeadFlightList>Results: </TextHeadFlightList>
+      <TextHeadFlightList>{t('flightsList.results')}</TextHeadFlightList>
       <BigTextHeadFlightList>{props.ammountOfFlight}</BigTextHeadFlightList>
       <StyledSelect
         id="sort-direction"
@@ -74,8 +76,10 @@ const HeadFlightsList: React.FC<WrapProps<HeadFlightsListProps>> = ({
         value={props.sortDirection}
         onChange={handleSortDirectionChange}
       >
-        <option value={SortOptions.PRICE}>Price</option>
-        <option value={SortOptions.DEPARTURE_TIME}>Departure time</option>
+        <option value={SortOptions.PRICE}>{t('flightsList.sort.price')}</option>
+        <option value={SortOptions.DEPARTURE_TIME}>
+          {t('flightsList.sort.departureTime')}
+        </option>
       </StyledSelect>
     </Wrapper>
   );

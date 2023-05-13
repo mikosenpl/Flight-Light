@@ -33,8 +33,10 @@ import { Airline } from '../../models/Airline';
 import { Airport } from '../../models/Airport';
 import { useGetAirports } from '../../queries/useGetAirports';
 import { formatTimeSeconds } from '../../utils/duration';
+import { useTranslation } from 'react-i18next';
 
 const FilterSideBar = () => {
+  const { t } = useTranslation();
   const [openConnection, setOpenConnection] = useState(true);
   const [openHour, setOpenHour] = useState(true);
   const [openDuration, setOpenDuration] = useState(true);
@@ -108,7 +110,7 @@ const FilterSideBar = () => {
           <ListItemIcon>
             <TimesOneMobiledataIcon />
           </ListItemIcon>
-          <FilterTitle primary="Połaczenia" />
+          <FilterTitle primary={t('filterSideBar.stops.name')} />
           {openConnection ? <ExpandLess /> : <ExpandMore />}
         </ListItemButton>
         <Collapse in={openConnection} timeout="auto" unmountOnExit>
@@ -117,12 +119,15 @@ const FilterSideBar = () => {
               <FormGroup>
                 <FormControlLabel
                   control={<Checkbox defaultChecked />}
-                  label="Bezpośrednio"
+                  label={t('filterSideBar.stops.direct')}
                 />
-                <FormControlLabel control={<Checkbox />} label="1 Połaczenie" />
                 <FormControlLabel
                   control={<Checkbox />}
-                  label="2+ Połaczenia"
+                  label={t('filterSideBar.stops.stop')}
+                />
+                <FormControlLabel
+                  control={<Checkbox />}
+                  label={t('filterSideBar.stops.stops')}
                 />
               </FormGroup>
             </ListItemButton>
@@ -133,7 +138,7 @@ const FilterSideBar = () => {
           <ListItemIcon>
             <StartIcon />
           </ListItemIcon>
-          <FilterTitle primary="Godzina odlotu" />
+          <FilterTitle primary={t('filterSideBar.departureTime.name')} />
           {openHour ? <ExpandLess /> : <ExpandMore />}
         </ListItemButton>
         <Collapse in={openHour} timeout="auto" unmountOnExit>
@@ -160,7 +165,7 @@ const FilterSideBar = () => {
                       aria-labelledby="range-slider"
                     />
                   }
-                  label={'Wylot: '}
+                  label={t('filterSideBar.departureTime.outbound')}
                   labelPlacement="start"
                 ></FormControlLabel>
               </FormGroup>
@@ -181,7 +186,7 @@ const FilterSideBar = () => {
                       aria-labelledby="range-slider"
                     />
                   }
-                  label={'Powrót: '}
+                  label={t('filterSideBar.departureTime.return')}
                   labelPlacement="start"
                 ></FormControlLabel>
               </FormGroup>
@@ -193,7 +198,7 @@ const FilterSideBar = () => {
           <ListItemIcon>
             <AlarmIcon />
           </ListItemIcon>
-          <FilterTitle primary="Czas podróży" />
+          <FilterTitle primary={t('filterSideBar.tripDuration.name')} />
           {openDuration ? <ExpandLess /> : <ExpandMore />}
         </ListItemButton>
         <Collapse in={openDuration} timeout="auto" unmountOnExit>
@@ -214,7 +219,7 @@ const FilterSideBar = () => {
                       aria-labelledby="range-slider"
                     />
                   }
-                  label={'Czas: '}
+                  label={t('filterSideBar.tripDuration.time')}
                   labelPlacement="start"
                 ></FormControlLabel>
               </FormGroup>
@@ -226,7 +231,7 @@ const FilterSideBar = () => {
           <ListItemIcon>
             <AirplaneTicketIcon />
           </ListItemIcon>
-          <FilterTitle primary="Linie lotnicze" />
+          <FilterTitle primary={t('filterSideBar.airlines.name')} />
           {openAirlines ? <ExpandLess /> : <ExpandMore />}
         </ListItemButton>
         <Collapse in={openAirlines} timeout="auto" unmountOnExit>
@@ -243,7 +248,7 @@ const FilterSideBar = () => {
                     );
                   })
                 ) : (
-                  <p>Spinner</p>
+                  <p></p>
                 )}
               </FormGroup>
             </ListItemButton>
@@ -254,7 +259,7 @@ const FilterSideBar = () => {
           <ListItemIcon>
             <LocationOnIcon />
           </ListItemIcon>
-          <FilterTitle primary="Lotniska" />
+          <FilterTitle primary={t('filterSideBar.airports.name')} />
           {openAirports ? <ExpandLess /> : <ExpandMore />}
         </ListItemButton>
         <Collapse in={openAirports} timeout="auto" unmountOnExit>
@@ -271,7 +276,7 @@ const FilterSideBar = () => {
                     );
                   })
                 ) : (
-                  <p>Spinner</p>
+                  <p>{t('alert.loading')}</p>
                 )}
               </FormGroup>
             </ListItemButton>

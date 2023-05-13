@@ -13,8 +13,10 @@ import FlightCard from '../FlightCard/FlightsCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import { setFlightSortDirection } from '../../store/slices/flight/flightSlice';
+import { useTranslation } from 'react-i18next';
 
 const FlightsList = () => {
+  const { t } = useTranslation();
   const [searchParams, setSearchParams] = useSearchParams();
   const sortDirection: SortOptions = useSelector(
     (state: RootState) => state.flight.sortDirection
@@ -63,7 +65,7 @@ const FlightsList = () => {
           return <FlightCard key={flight.uuid} flight={flight} />;
         })
       ) : (
-        <p>Spinner</p>
+        <p>{t('alert.loading')}</p>
       )}
     </FlightsListWrapper>
   );

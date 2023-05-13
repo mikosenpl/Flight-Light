@@ -1,0 +1,59 @@
+{
+  "alert": {
+    "loading": "Ładowanie..."
+  },
+  "header": {
+    "navigation": {
+      "search": "Wyszukiwarka",
+      "planning": "Zaplanuj podróż",
+      "faq": "FAQ",
+      "aboutUs": "O nas",
+      "register": "Rejestracja",
+      "logIn": "Logowanie"
+    }
+  },
+  "filterSideBar": {
+    "stops": {
+      "name": "Połączenia",
+      "direct": "Bezpośrednio",
+      "stop": "1 połączenie",
+      "stops": "2+ połączenia"
+    },
+    "departureTime": {
+      "name": "Godzina odlotu",
+      "outbound": "Wylot:",
+      "return": "Powrót:"
+    },
+    "tripDuration": {
+      "name": "Czas podróży",
+      "time": "Czas"
+    },
+    "airlines": {
+      "name": "Linie Lotnicze"
+    },
+    "airports": {
+      "name": "Lotniska"
+    }
+  },
+  "flightCard": {
+    "book": "Zarezerwuj"
+  },
+  "flightInfo": {
+    "info": "Informacje",
+    "book": "Zarezerwuj",
+    "freeLuggage": "Darmowy bagaż",
+    "seat": {
+      "pitch": "Miejsc w samolocie",
+      "class": "Miejsca w klasie",
+      "free": "Wolnych miejsc"
+    },
+    "bottomText": "Uwaga: Aktualny stan rezerwacji może ulec zmianie. Prosimy pamiętać, że dostępność miejsc na lotach może podlegać dynamicznym zmianom, zwłaszcza w przypadku dużej liczby rezerwacji. Wszelkie podane informacje na temat dostępności i cen są obecne w momencie wyszukiwania, jednakże ostateczne potwierdzenie rezerwacji i gwarancja miejsc odbywają się na następnym etapie procesu rezerwacji."
+  },
+  "flightsList": {
+    "results": "Wyników:",
+    "sort": {
+      "price": "Cena",
+      "departureTime": "Godzina odlotu"
+    }
+  }
+}

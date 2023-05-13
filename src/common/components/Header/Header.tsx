@@ -9,22 +9,24 @@ import {
   StyledMuiButtonLink,
   StyledUnderlinedLink,
 } from './Header.styles';
+import { useTranslation } from 'react-i18next';
 
 const Header = () => {
+  const { t } = useTranslation();
   const MenuNavigationItem = () => {
     return (
       <MenuNavigationItemWrapper>
         <li>
-          <Link to="/search">Wyszukiwarka</Link>
+          <Link to="/search">{t('header.navigation.search')}</Link>
         </li>
         <li>
-          <Link to="/news">Zaplanuj podróz</Link>
+          <Link to="/news">{t('header.navigation.planning')}</Link>
         </li>
         <li>
-          <Link to="/faq">FAQ</Link>
+          <Link to="/faq">{t('header.navigation.faq')}</Link>
         </li>
         <li>
-          <Link to="/about-us">O nas</Link>
+          <Link to="/about-us">{t('header.navigation.aboutUs')}</Link>
         </li>
       </MenuNavigationItemWrapper>
     );
@@ -35,12 +37,12 @@ const Header = () => {
       <MenuNavigationItemWrapper>
         <li>
           <StyledMuiButtonLink>
-            <Link to="/register">Rejestacja</Link>
+            <Link to="/register">{t('header.navigation.register')}</Link>
           </StyledMuiButtonLink>
         </li>
         <li>
           <StyledUnderlinedLink>
-            <Link to="/login">LOGOWANIE</Link>
+            <Link to="/login">{t('header.navigation.logIn')}</Link>
           </StyledUnderlinedLink>
         </li>
       </MenuNavigationItemWrapper>

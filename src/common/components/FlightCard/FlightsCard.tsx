@@ -26,12 +26,14 @@ import {
   MiddleLine,
   BookFlightButton,
 } from '../../assets/styles/GlobalStyle';
+import { useTranslation } from 'react-i18next';
 
 interface FlightCardProps {
   flight: Flight;
 }
 
 const FlightCard = (props: FlightCardProps) => {
+  const { t } = useTranslation();
   const AirlineImageUrl = getImageOfAirlineUrl(props.flight.airlineCode);
 
   const BoundPartArea = (
@@ -121,7 +123,7 @@ const FlightCard = (props: FlightCardProps) => {
               {props.flight.price.amount} {props.flight.price.currency}
             </BigText>
             <Link to={`/flight/${props.flight.uuid}`}>
-              <BookFlightButton>Book flight</BookFlightButton>
+              <BookFlightButton>{t('flightCard.book')}</BookFlightButton>
             </Link>
           </div>
         </CardRightInfo>

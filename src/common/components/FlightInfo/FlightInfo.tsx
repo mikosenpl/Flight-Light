@@ -58,12 +58,14 @@ import FlightClassIcon from '@mui/icons-material/FlightClass';
 import FlightIcon from '@mui/icons-material/Flight';
 import BadgeIcon from '@mui/icons-material/Badge';
 import { useGetFlight } from '../../queries/useGetFlights';
+import { useTranslation } from 'react-i18next';
 
 interface FlightInfoProps {
   flight: Flight;
 }
 
 const FlightInfo = (props: FlightInfoProps) => {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const [flightDetails, setFlightDetails] = useState<FlightDetails>();
   const AirlineImageUrl = getImageOfAirlineUrl(props.flight.airlineCode);
@@ -135,7 +137,7 @@ const FlightInfo = (props: FlightInfoProps) => {
           <FlightInfoDetailsPart>
             <FlexSpaceBetween>
               <HalfWidth>
-                <SmallText>Darmowy bagaż</SmallText>
+                <SmallText>{t('flightInfo.freeLuggage')}</SmallText>
               </HalfWidth>
               <QuarterWidthRight>
                 <LuggageIcon fontSize="large" />
@@ -149,7 +151,7 @@ const FlightInfo = (props: FlightInfoProps) => {
             {flightDetails?.seatPitch && (
               <FlexSpaceBetween>
                 <HalfWidth>
-                  <SmallText>Miejsc w samolocie</SmallText>
+                  <SmallText>{t('flightInfo.seat.pitch')}</SmallText>
                 </HalfWidth>
                 <QuarterWidthRight>
                   <FlightClassIcon fontSize="large" />
@@ -172,13 +174,13 @@ const FlightInfo = (props: FlightInfoProps) => {
         <FlexGap1>
           {flightDetails?.cabinClass && (
             <HalfWidth>
-              <SmallText>Miejsca w klasie</SmallText>
+              <SmallText>{t('flightInfo.seat.class')}</SmallText>
               <BoldText>{flightDetails.cabinClass}</BoldText>
             </HalfWidth>
           )}
           {flightDetails?.remainingNumberOfSeats && (
             <HalfWidthRightAlign>
-              <TextTertiary>Wolnych miejsc: </TextTertiary>
+              <TextTertiary>{t('flightInfo.seat.free')}</TextTertiary>
               <BiggerTextSecondary>
                 {flightDetails.remainingNumberOfSeats}
               </BiggerTextSecondary>
@@ -191,7 +193,7 @@ const FlightInfo = (props: FlightInfoProps) => {
   return (
     <div>
       <CardInfoButton startIcon={<InfoIcon />} onClick={handleOpen}>
-        Info
+        {t('flightInfo.info')}
       </CardInfoButton>
       <FlightInfoModal
         open={open}
@@ -217,7 +219,7 @@ const FlightInfo = (props: FlightInfoProps) => {
               </div>
               <FlexCenter>
                 <FlexAlignEnd>
-                  <BookFlightButton>Book flight</BookFlightButton>
+                  <BookFlightButton>{t('flightInfo.book')}</BookFlightButton>
                 </FlexAlignEnd>
                 <div>
                   <CloseButton />
@@ -232,15 +234,7 @@ const FlightInfo = (props: FlightInfoProps) => {
               {BoundPartArea(props.flight.bounds[1])}
               <MiddleLine />
               <FlightInfoFooter>
-                <SmallText>
-                  Uwaga: Aktualny stan rezerwacji może ulec zmianie. Prosimy
-                  pamiętać, że dostępność miejsc na lotach może podlegać
-                  dynamicznym zmianom, zwłaszcza w przypadku dużej liczby
-                  rezerwacji. Wszelkie podane informacje na temat dostępności i
-                  cen są obecne w momencie wyszukiwania, jednakże ostateczne
-                  potwierdzenie rezerwacji i gwarancja miejsc odbywają się na
-                  następnym etapie procesu rezerwacji.
-                </SmallText>
+                <SmallText>{t('flightInfo.bottomText')}</SmallText>
               </FlightInfoFooter>
             </FlightInfoBodyContent>
           </FlightInfoBody>
